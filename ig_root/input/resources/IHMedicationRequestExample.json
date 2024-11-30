@@ -1,0 +1,70 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "IHMedicationRequestExample",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/StructureDefinition/IHMedicationRequest"]
+  },
+  "identifier": [
+    {
+      "id": "c9582307-b812-4acc-b82b-77c4c24ba7bc"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "priority": "urgent",
+  "medicationCodeableConcept": {
+    "id": "485df1f8-1813-42ae-ae81-f892f9562067",
+    "coding": [
+      {
+        "id": "7bb88c7a-9644-4d87-8a21-686126c8bb38",
+        "system": "$systemUrl",
+        "display": "Cetirizine"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example-openmrs-Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/EncounterExample"
+  },
+  "authoredOn": "2022-08-07",
+  "requester": {
+    "reference": "Practitioner/PractitionerExample"
+  },
+  "dispenseRequest": {
+    "numberOfRepeatsAllowed": 0,
+    "quantity": {
+      "value": 10,
+      "unit": "tab (s)"
+    }
+  },
+  "dosageInstruction": [
+    {
+      "sequence": 1,
+      "timing": {
+        "code": {
+          "coding": [
+            {
+              "id": "05a3c873-a884-4edd-88de-25622f121d77",
+              "system": "$systemUrl",
+              "display": "1/day x 7 days/week"
+            }
+          ],
+          "text": "1/day x 7 days/week"
+        }
+      },
+      "route": {
+        "id": "91753a5c-f3c2-4179-9a1b-35c80df575ce",
+        "coding": [
+          {
+            "id": "41c75ba4-a423-4628-9d1d-0d306ab1f250",
+            "system": "$systemUrl",
+            "display": "UNKNOWN"
+          }
+        ],
+        "text": "UNKNOWN"
+      }
+    }
+  ]
+}

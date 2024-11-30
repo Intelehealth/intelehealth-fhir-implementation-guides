@@ -1,0 +1,115 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHMedication",
+  "url": "http://hl7.org/fhir/StructureDefinition/IHMedication",
+  "version": "1.0.0",
+  "name": "IH Medication",
+  "title": "IH OpenMRS Medication",
+  "status": "active",
+  "description": "A FHIR Medication Resource as understood by OpenMRS",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Medication",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Medication",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Medication.id",
+        "path": "Medication.id",
+        "min": 1,
+        "max": "1",
+        "short": "Logical id of this medication",
+        "definition": "The logical id of the resource, as used in the URL for the resource."
+      },
+      { "id": "Medication.meta", "path": "Medication.meta", "min": 0, "max": "1" },
+      {
+        "id": "Medication.meta.tag",
+        "path": "Medication.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "Medication.code",
+        "path": "Medication.code",
+        "min": 0,
+        "max": "1",
+        "short": "Codes identifying the medication",
+        "definition": "A code (or set of codes) that specify this medication."
+      },
+      {
+        "id": "Medication.status",
+        "path": "Medication.status",
+        "min": 0,
+        "max": "1",
+        "short": "active | inactive | entered-in-error",
+        "definition": "A code to indicate if the medication is in active use."
+      },
+      {
+        "id": "Medication.manufacturer",
+        "path": "Medication.manufacturer",
+        "min": 0,
+        "max": "0",
+        "short": "Not used in this profile",
+        "definition": "Not applicable for this profile."
+      },
+      {
+        "id": "Medication.form",
+        "path": "Medication.form",
+        "min": 0,
+        "max": "1",
+        "short": "powder | tablets | capsule +",
+        "definition": "Describes the form of the item."
+      },
+      {
+        "id": "Medication.amount",
+        "path": "Medication.amount",
+        "min": 0,
+        "max": "0",
+        "short": "Not used in this profile",
+        "definition": "Not applicable for this profile."
+      },
+      {
+        "id": "Medication.ingredient",
+        "path": "Medication.ingredient",
+        "min": 0,
+        "max": "1",
+        "short": "Active or inactive ingredient",
+        "definition": "Identifies a particular constituent of interest in the product."
+      },
+      {
+        "id": "Medication.ingredient.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "min": 1,
+        "max": "1",
+        "short": "The ingredient (substance or reference)",
+        "definition": "The actual ingredient."
+      },
+      {
+        "id": "Medication.batch",
+        "path": "Medication.batch",
+        "min": 0,
+        "max": "0",
+        "short": "Not used in this profile",
+        "definition": "Not applicable for this profile."
+      },
+      {
+        "id": "Medication.extension",
+        "path": "Medication.extension",
+        "min": 0,
+        "max": "*",
+        
+        "short": "Drug Classification",
+        "definition": "A drug classification extension for OpenMRS Medication."
+      }
+    ]
+  }
+ 
+}

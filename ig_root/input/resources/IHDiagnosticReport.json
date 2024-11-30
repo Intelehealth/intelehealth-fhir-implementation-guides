@@ -1,0 +1,135 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHDiagnosticReport",
+  "url": "http://hl7.org/fhir/StructureDefinition/IHDiagnosticReport",
+  "version": "1.0.0",
+  "name": "IH DiagnosticReport",
+  "title": "IH Diagnostic Report ",
+  "status": "draft",  
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "DiagnosticReport",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+  "derivation": "constraint",
+  "snapshot": {
+    "element": [
+      {
+        "id": "DiagnosticReport.id",
+        "path": "DiagnosticReport.id",
+        "min": 1,
+        "max": "1"
+      },
+      { "id": "DiagnosticReport.meta", "path": "DiagnosticReport.meta", "min": 0, "max": "1" },
+      {
+        "id": "DiagnosticReport.meta.tag",
+        "path": "DiagnosticReport.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "DiagnosticReport.code",
+        "path": "DiagnosticReport.code",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "DiagnosticReport.code.coding",
+        "path": "DiagnosticReport.code.coding",
+        "min": 1,
+        "max": "*",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/IHOpenMRSOrderCode"
+        }
+      },
+      {
+        "id": "DiagnosticReport.result",
+        "path": "DiagnosticReport.result",
+        "min": 0,
+        "max": "*",
+        "reference": {
+          "reference": "OpenMRSObservation"
+        }
+      },
+      {
+        "id": "DiagnosticReport.status",
+        "path": "DiagnosticReport.status",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "DiagnosticReport.category",
+        "path": "DiagnosticReport.category",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "DiagnosticReport.encounter",
+        "path": "DiagnosticReport.encounter",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "DiagnosticReport.subject",
+        "path": "DiagnosticReport.subject",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "DiagnosticReport.issued",
+        "path": "DiagnosticReport.issued",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "DiagnosticReport.presentedForm",
+        "path": "DiagnosticReport.presentedForm",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Attachment"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/document-format"
+        },
+        "short": "Key findings or entire report as an attachment",
+        "definition": "Rich text, PDF, or other media that represents the content of the Diagnostic Report. This is typically a rendered or complete version of the report."
+      },
+      {
+        "id": "DiagnosticReport.presentedForm.contentType",
+        "path": "DiagnosticReport.presentedForm.contentType",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/mimetypes"
+        },
+        "short": "Content type of the attachment",
+        "definition": "The MIME type of the content, such as application/pdf or text/html."
+      },
+      {
+        "id": "DiagnosticReport.presentedForm.language",
+        "path": "DiagnosticReport.presentedForm.language",
+        "min": 0,
+        "max": "1",
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/ValueSet/languages"
+        },
+        "short": "Language of the attachment content",
+        "definition": "Indicates the language of the content in the presentedForm."
+      }
+    ]
+  }
+  
+}

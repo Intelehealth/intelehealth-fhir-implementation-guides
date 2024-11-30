@@ -1,0 +1,146 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHAppointmentMapping",
+  "url": "http://hl7.org/fhir/StructureMap/IHAppointmentMapping",
+  "version": "1.0.0",
+  "name": "IH PatientMapping",
+  "title": "IH Patient to FHIR Patient Mapping",
+  "status": "active",
+  "description": "This StructureMap defines the mapping between OpenMRS FHIR2 and standard FHIR Patient resources.",
+  
+  
+  "group": [
+    {
+      
+      "rule": [
+      
+        {
+          "name": "serviceCategoryMapping",
+          "source": [
+            {
+              "context": "Appointment",
+              "element": "serviceCategory"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "serviceCategory",
+              "value": "Appointment.serviceCategory"
+            }
+            
+          ]
+        },
+        {
+          "name": "serviceTypeMapping",
+          "source": [
+            {
+              "context": "Appointment",
+              "element": "serviceType"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Appointment.serviceType"
+              
+            }
+            
+          ]
+        },
+        {
+          "name": "specialtyMapping",
+          "source": [
+            {
+              "context": "Appointment",
+              "element": "specialty"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Appointment",
+              "element": "specialty"
+              
+            }
+            
+          ]
+        },
+        {
+          "name": "appointmentTypeMapping",
+          "source": [
+            {
+              "context": "Appointment",
+              "element": "appointmentType"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Appointment",
+              "element": "appointmentType"
+              
+            }
+            
+          ]
+        },
+        {
+          "name": "appointmentTypeMapping",
+          "source": [
+            {
+              "context": "Appointment",
+              "element": "appointmentType"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Appointment",
+              "element": "requester_id"
+              
+            },
+            {
+              "context": "Openmrs.Appointment",
+              "element": "patient_uuid"
+              
+            }
+            
+          ]
+        }
+        ,{
+          "name": "startMapping",
+          "source": [
+            {
+              "context": "Appointment",
+              "element": "start"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Appointment",
+              "element": "start"
+              
+            }
+            
+          ]
+        },{
+          "name": "endMapping",
+          "source": [
+            {
+              "context": "Appointment",
+              "element": "end"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Appointment",
+              "element": "end"
+              
+            }
+            
+          ]
+        }
+
+
+      ]
+    }
+  ]
+  
+}

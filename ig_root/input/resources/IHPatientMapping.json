@@ -1,0 +1,173 @@
+{
+  "resourceType": "StructureMap",
+  "id": "omrs-patient-mapping",
+  "url": "http://hl7.org/fhir/StructureMap/omrs-patient-mapping",
+  "version": "1.0.0",
+  "name": "IH PatientMapping",
+  "title": "IH Patient to FHIR Patient Mapping",
+  "status": "active",
+  "description": "This StructureMap defines the mapping between OpenMRS FHIR2 and standard FHIR Patient resources.",
+  
+  
+  "group": [
+    {
+      "name": "PatientMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Patient in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+      
+        {
+          "name": "identifierMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "identifier"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "identifier",
+              "value": "Patient.identifier"
+            },
+            {
+              "context": "target",
+              "element": "activeIdentifiers",
+              "value": "Patient.activeIdentifiers"
+            }
+          ]
+        },
+        {
+          "name": "idMapping",
+          "Patient": [
+            {
+              "context": "Patient",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "id",
+              "value": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "nameMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "name"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "name",
+              "value": "Patient.name"
+            }
+          ]
+        },
+        {
+          "name": "telecomMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "telecom"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Person.personAttribute",
+              "element": "telecom",
+              "value": "Person.personAttribute"
+              
+            }
+          ]
+        },
+        {
+          "name": "genderMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "gender"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "gender",
+              "value": "Patient.gender"
+            }
+          ]
+        },
+        {
+          "name": "birthDateMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "birthDate"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "birthDate",
+              "value": "Patient.birthDate"
+            }
+          ]
+        },
+        {
+          "name": "deceasedMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "deceased[x]"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "deceased[x]",
+              "value": "Patient.deathDate or Patient.dead"
+            }
+          ]
+        },
+        {
+          "name": "addressMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "address"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "address",
+              "value": "Patient.address"
+            }
+          ]
+        },
+        {
+          "name": "activeMapping",
+          "source": [
+            {
+              "context": "Patient",
+              "element": "active"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Patient",
+              "element": "active",
+              "value": "Patient.voided"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
+}

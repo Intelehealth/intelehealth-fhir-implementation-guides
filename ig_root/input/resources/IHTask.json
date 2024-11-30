@@ -1,0 +1,226 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHTask",
+  "url": "http://hl7.org/fhir/StructureDefinition/OpenMRS-task",
+  "version": "1.0.0",
+  "name": "IH OpenMRS Task",
+  "title": "IH OpenMRS Task",
+  "status": "active",
+  "description": "A Task resource represents an activity that is to be performed, and tracks the completion of said activity between OpenMRS and a FHIR2 system.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Task",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Task",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Task.id",
+        "path": "Task.id",
+        "min": 1,
+        "max": "1",
+        "short": "Logical id of the resource",
+        "definition": "The logical id of the resource, as used in the URL for the resource."
+      },
+      {
+        "id": "Task.meta.tag",
+        "path": "Task.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "Task.basedOn",
+        "path": "Task.basedOn",
+        "min": 1,
+        "max": "*",
+        
+        "short": "What the task is based on",
+        "definition": "Reference to the ServiceRequest that the task is based on."
+      },
+      {
+        "id": "Task.for",
+        "path": "Task.for",
+        "min": 0,
+        "max": "1",
+        
+        "short": "Who the task is for",
+        "definition": "The patient for whom the task is being performed."
+      },
+      {
+        "id": "Task.authoredOn",
+        "path": "Task.authoredOn",
+        "min": 1,
+        "max": "1",
+        "short": "Date and time task authored",
+        "definition": "The date and time this task was created."
+      },
+      {
+        "id": "Task.status",
+        "path": "Task.status",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/OMRSPatientTaskStatusVS"
+        },
+        "short": "The current status of the task",
+        "definition": "The current status of the task (e.g., draft, active, completed)."
+      },
+      {
+        "id": "Task.intent",
+        "path": "Task.intent",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/OMRSPatientTaskIntentVS"
+        },
+        "short": "The intent of the task",
+        "definition": "The intent of the task, such as proposal, plan, or order."
+      },
+      {
+        "id": "Task.lastModified",
+        "path": "Task.lastModified",
+        "min": 0,
+        "max": "1",
+        "short": "Date last modified",
+        "definition": "The date and time of the last change to the task."
+      },
+      {
+        "id": "Task.output",
+        "path": "Task.output",
+        "min": 0,
+        "max": "*",
+        "short": "Task results or outputs",
+        "definition": "Outputs produced by the task."
+      },
+      {
+        "id": "Task.input",
+        "path": "Task.input",
+        "min": 0,
+        "max": "*",
+        "short": "Input to the task",
+        "definition": "Information used to perform the task."
+      },
+      {
+        "id": "Task.encounter",
+        "path": "Task.encounter",
+        "min": 0,
+        "max": "1",
+       
+        "short": "Associated encounter",
+        "definition": "The encounter during which this task was created or performed."
+      },
+      {
+        "id": "Task.owner",
+        "path": "Task.owner",
+        "min": 0,
+        "max": "1",
+        
+        "short": "Owner of the task",
+        "definition": "The organization responsible for completing the task."
+      }
+    ]
+  }
+  ,
+  "contained": [
+    
+    {
+      "resourceType": "SearchParameter",
+      "id": "Task-basedOn",
+      "url": "http://example.com/core/SearchParameter/Task-basedOn",
+      "name": "TaskBasedOnSearchParameter",
+      "status": "active",
+      "code": "Task.based-on",
+      "base": [
+        "Task"
+      ],
+      "target": [
+        "Task"
+      ],
+      "type": "reference",
+      "expression": "Task.based-on",
+      "xpath": "f:Task/f:Task.based-on",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "Task-id",
+      "url": "http://example.com/core/SearchParameter/Task-id",
+      "name": "TaskIdSearchParameter",
+      "status": "active",
+      "code": "_id",
+      "base": [
+        "Task"
+      ],
+      "target": [
+        "Task"
+      ],
+      "type": "token",
+      "expression": "Task._id",
+      "xpath": "f:Task/f:Task._id",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "Task-lastUpdated",
+      "url": "http://example.com/core/SearchParameter/Task-lastUpdated",
+      "name": "TaskLastUpdatedSearchParameter",
+      "status": "active",
+      "code": "_lastUpdated",
+      "base": [
+        "Task"
+      ],
+      "target": [
+        "Task"
+      ],
+      "type": "date",
+      "expression": "Task._lastUpdated",
+      "xpath": "f:Task/f:Task._lastUpdated",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "Task-owner",
+      "url": "http://example.com/core/SearchParameter/Task-owner",
+      "name": "TaskOwnerSearchParameter",
+      "status": "active",
+      "code": "Task.owner",
+      "base": [
+        "Task"
+      ],
+      "target": [
+        "Task"
+      ],
+      "type": "reference",
+      "expression": "Task.owner",
+      "xpath": "f:Task/f:Task.owner",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "Task-status",
+      "url": "http://example.com/core/SearchParameter/Task-status",
+      "name": "TaskStatueSearchParameter",
+      "status": "active",
+      "code": "Task.status",
+      "base": [
+        "Task"
+      ],
+      "target": [
+        "Task"
+      ],
+      "type": "token",
+      "expression": "Task.status",
+      "xpath": "f:Task/f:Task.status",
+      "xpathUsage": "normal"
+    }
+  ]
+}

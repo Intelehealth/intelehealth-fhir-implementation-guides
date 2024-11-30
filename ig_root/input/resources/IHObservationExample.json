@@ -1,0 +1,67 @@
+{
+  "resourceType": "Observation",
+  "id": "IHObservationExample",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/StructureDefinition/IHObservation"]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "exam"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "431514004",
+        "display": "SpO2 - saturation of peripheral oxygen"
+      }
+    ],
+    "text": "Arterial blood oxygen saturation (pulse oximeter)"
+  },
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example-openmrs-Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/EncounterExample"
+  },
+  "valueQuantity": {
+    "value": 35.0,
+    "unit": "DEG C"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "H",
+          "display": "High"
+        }
+      ]
+    }
+  ],
+  "referenceRange": [
+    {
+      "low": {
+        "value": 10.0
+      },
+      "high": {
+        "value": 272.0
+      },
+      "type": {
+        "coding": [
+          {
+            "system": "http://example.com/ext/obs/reference-range",
+            "code": "absolute"
+          }
+        ]
+      }
+    }
+  ]
+}

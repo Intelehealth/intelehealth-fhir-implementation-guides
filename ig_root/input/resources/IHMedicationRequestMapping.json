@@ -1,0 +1,164 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHMedicationRequestMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "url": "http://example.org/fhir/StructureMap/IHMedicationRequestMapping",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "MedicationRequestMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Observation in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Order",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "intent",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "intent"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Order",
+              "element": "MedicationRequestIntent.ORDER"
+            }
+          ]
+        },
+        {
+          "name": "priority",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "priority"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Order.Urgency"
+            }
+          ]
+        },
+        {
+          "name": "subject",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "subject"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Order.Patient"
+            }
+          ]
+        },
+        {
+          "name": "encounter",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "encounter"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Order.Encounter"
+            }
+          ]
+        },
+        {
+          "name": "requester",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "requester"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Order.Provider"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "reasonCode",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "reasonCode"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Order.OrderReason"
+            }
+          ]
+        },
+        {
+          "name": "basedOn",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "basedOn"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Order.PreviousOrder"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "note",
+          "source": [
+            {
+              "context": "MedicationRequest",
+              "element": "note"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Order.commentToFulfiller"
+            }
+          ]
+        }
+        
+        
+        
+        
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHPerson",
+  "url": "http://hl7.org/fhir/StructureDefinition/ih-person",
+  "version": "1.0.0",
+  "name": "IH Person",
+  "title": "OpenMRS Person",
+  "status": "draft",
+  "description": "A FHIR Person as understood by OpenMRS",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Person",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Person",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Person.id",
+        "path": "Person.id",
+        "min": 1,
+        "max": "1"
+      },
+      { "id": "Person.meta", "path": "Person.meta", "min": 0, "max": "1" },
+      {
+        "id": "Person.meta.tag",
+        "path": "Person.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "Person.identifier",
+        "path": "Person.identifier",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Person.name",
+        "path": "Person.name",
+        "min": 1,
+        "max": "*"
+      },
+      {
+        "id": "Person.telecom",
+        "path": "Person.telecom",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Person.gender",
+        "path": "Person.gender",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Person.birthDate",
+        "path": "Person.birthDate",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Person.address",
+        "path": "Person.address",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Person.active",
+        "path": "Person.active",
+        "min": 1,
+        "max": "1",
+        "fixedBoolean": true
+      }
+    ]
+  },
+  "contained": [
+    
+    {
+      "resourceType": "SearchParameter",
+      "id": "person-gender",
+      "name": "PersonGenderSearchParameter",
+      "status": "active",
+      "description": "Searches based on the gender of the person. Note that this value must be from the AdministrativeGender valueset eg) /ws/fhir2/{release}/Person?gender={gender}",
+      "code": "gender",
+      "base": ["Person"],
+      "type": "token",
+      "target": ["Person"],
+      "expression": "Person.gender",
+      "xpath": "f:Person/f:gender",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "person-birthdate",
+      "name": "PersonBirthdateSearchParameter",
+      "status": "active",
+      "description": "Searches based on the person's birthdate eg) /ws/fhir2/{release}/Person?birthdate={date}",
+      "code": "birthdate",
+      "base": ["Person"],
+      "type": "date",
+      "target": ["Person"],
+      "expression": "Person.birthdate",
+      "xpath": "f:Person/f:birthdate",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "person-id",
+      "name": "PersonIdSearchParameter",
+      "status": "active",
+      "description": "Searches based on the exact UUID of the person record eg) /ws/fhir2/{release}/Person?_id={uuid}",
+      "code": "_id",
+      "base": ["Person"],
+      "type": "token",
+      "target": ["Person"],
+      "expression": "Person._id",
+      "xpath": "f:Person/f:_id",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "person-lastUpdated",
+      "name": "PersonLastUpdatedSearchParameter",
+      "status": "active",
+      "description": "Searches based on the the dateCreated or dateUpdated field for the person record eg) /ws/fhir2/{release}/Person?_lastUpdated={date-range}",
+      "code": "_lastUpdated",
+      "base": ["Person"],
+      "type": "date",
+      "target": ["Person"],
+      "expression": "Person._lastUpdated",
+      "xpath": "f:Person/f:_lastUpdated",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "person-address-country",
+      "name": "PersonCountrySearchParameter",
+      "status": "active",
+      "description": "Searches based on the person's recorded country of address eg) /ws/fhir2/{release}/Person?address-country={country}",
+      "code": "address-country",
+      "base": ["Person"],
+      "type": "string",
+      "target": ["Person"],
+      "expression": "Person.address-country",
+      "xpath": "f:Person/f:address-country",
+      "xpathUsage": "normal"
+    }
+    
+    
+    
+    
+    
+  ]
+}

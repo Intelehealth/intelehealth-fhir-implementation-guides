@@ -1,0 +1,227 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHLocation",
+  "url": "http://example.org/fhir/StructureDefinition/IHLocation",
+  "version": "1.0.0",
+  "name": "IH Location",
+  "title": "IH OpenMRS Location",
+  "status": "draft",
+  "description": "An OpenMRS location",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Location",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Location",
+  "derivation": "constraint",
+  "snapshot": {
+    "element": [
+      {
+        "id": "Location",
+        "path": "Location",
+        "short": "OpenMRS Location profile",
+        "definition": "An OpenMRS location based on the FHIR Location resource.",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Location.id",
+        "path": "Location.id",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Location.status",
+        "path": "Location.status",
+        "min": 0,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/location-status"
+        }
+      },
+      {
+        "id": "Location.name",
+        "path": "Location.name",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Location.description",
+        "path": "Location.description",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Location.type",
+        "path": "Location.type",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Location.position",
+        "path": "Location.position",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Location.position.longitude",
+        "path": "Location.position.longitude",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Location.position.latitude",
+        "path": "Location.position.latitude",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Location.telecom",
+        "path": "Location.telecom",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "OMRSLocationContactPoint"
+          }
+        ]
+      },
+      {
+        "id": "Location.address",
+        "path": "Location.address",
+        "type": [
+          {
+            "code": "OMRSAddress"
+          }
+        ]
+      },
+      {
+        "id": "Location.partOf",
+        "path": "Location.partOf",
+        "min": 0,
+        "max": "1"
+      }
+    ]
+  },
+  
+  "contained": [
+    {
+      "resourceType": "SearchParameter",
+      "id": "location-name",
+      "name": "LocationNameSearchParameter",
+      "status": "active",
+      "description": "Searches based on the name field for the location record eg) /ws/fhir2/{release}/Location?name={name}",
+      "code": "name",
+      
+       "base": [
+        "Location"
+      ],
+      "target": ["Location"],
+      "type": "string",
+      "expression": "Location.name",
+      "xpath": "f:Location/f:name",
+      "xpathUsage": "normal"
+      
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "location-address-city",
+      "name": "LocationCitySearchParameter",
+      "status": "active",
+      "description": "Searches based on the address-city field for the location record eg) /ws/fhir2/{release}/Location?address-city={city}",
+      "code": "address-city",
+     
+      "base": [
+        "Location"
+      ],
+      "target": ["Location"],
+      "type": "string",
+      "expression": "Location.address-city",
+      "xpath": "f:Location/f:address-city",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "location-tag",
+      "name": "LocationTagSearchParameter",
+      "status": "active",
+      "description": "Searches based on the tag field for the location record eg) /ws/fhir2/{release}/Location?_tag={tag}",
+      "code": "tag",
+     
+      "base": [
+        "Location"
+      ],
+      "target": ["Location"],
+      "type": "string",
+      "expression": "Location.tag",
+      "xpath": "f:Location/f:tag",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "location-partof",
+      "name": "LocationPartOfSearchParameter",
+      "status": "active",
+      "description": "Searches based on the partof field for the location record eg) /ws/fhir2/{release}/Location?partof={reference}",
+      "code": "partOf",
+     
+      "base": [
+        "Location"
+      ],
+      "target": ["Location"],
+      "type": "reference",
+      "expression": "Location.partOf",
+      "xpath": "f:Location/f:partOf",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "location-partof-name",
+      "name": "LocationPartOfNameSearchParameter",
+      "status": "active",
+      "description": "Searches based on the partof location reference name field for the location record eg) /ws/fhir2/{release}/Location?partof.name={name}",
+      "code": "partOf-name",
+      
+      "base": [
+        "Location"
+      ],
+      "target": ["Location"],
+      "type": "reference",
+      "expression": "Location.partOf-name",
+      "xpath": "f:Location/f:partOf-name",
+      "xpathUsage": "normal"
+    },{
+      "resourceType": "SearchParameter",
+      "id": "location-id",
+      "name": "LocationIdSearchParameter",
+      "status": "active",
+      "description": "Searches based on the location uuid field for the location record eg) /ws/fhir2/{release}/Location?_id={uuid}",
+      "code": "_id",
+      
+      "base": [
+        "Location"
+      ],
+      "target": ["Location"],
+      "type": "token",
+      "expression": "Location._id",
+      "xpath": "f:Location/f:_id",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "location-lastUpdated",
+      "name": "LocationLastUpdatedSearchParameter",
+      "status": "active",
+      "description": "Searches based on the location lastUpdated field for the location record eg) /ws/fhir2/{release}/Location?_lastUpdated={date}",
+      "code": "_lastUpdated",
+      "base": [
+        "Location"
+      ],
+      "target": ["Location"],
+      "type": "date",
+      "expression": "Location._lastUpdated",
+      "xpath": "f:Location/f:_lastUpdated",
+      "xpathUsage": "normal"
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHServiceRequest",
+  "url": "http://hl7.org/fhir/StructureDefinition/IH-service-request",
+  "version": "1.0.0",
+  "name": "IH OpenMRS ServiceRequest",
+  "title": "IH OpenMRS Service Request",
+  "status": "active",
+  "description": "Service Request Resource represents a request for some type of procedure or diagnostic test to be performed. When fulfilled, the results of this request are represented as a DiagnosticReport resource with associated Observation resources.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ServiceRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ServiceRequest.id",
+        "path": "ServiceRequest.id",
+        "min": 1,
+        "max": "1",
+        "short": "Logical id of the service request",
+        "definition": "The logical id of the resource, as used in the URL for the resource."
+      },
+      {
+        "id": "Patient.meta.tag",
+        "path": "Patient.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "ServiceRequest.code",
+        "path": "ServiceRequest.code",
+        "min": 1,
+        "max": "1",
+        "short": "What is being requested/ordered",
+        "definition": "A code that identifies a particular service (i.e., what is being requested/ordered)."
+        
+      },
+      {
+        "id": "ServiceRequest.code.coding",
+        "path": "ServiceRequest.code.coding",
+        "min": 1,
+        "max": "*",
+        
+        "binding": {
+          "strength": "example",
+          "valueSet": "http://hl7.org/fhir/ValueSet/OpenMRSOrderCodeVS"
+        }
+      },
+      {
+        "id": "ServiceRequest.status",
+        "path": "ServiceRequest.status",
+        "min": 1,
+        "max": "1",
+        "short": "The status of the request",
+        "definition": "The current status of the service request."
+      },
+      {
+        "id": "ServiceRequest.intent",
+        "path": "ServiceRequest.intent",
+        "min": 1,
+        "max": "1",
+        "short": "The intent of the request",
+        "definition": "Whether the request is a proposal, plan, or an order."
+      },
+      {
+        "id": "ServiceRequest.subject",
+        "path": "ServiceRequest.subject",
+        "min": 1,
+        "max": "1",
+        
+        "short": "Individual or group the service is ordered for",
+        "definition": "The patient or group to receive the service."
+      },
+      {
+        "id": "ServiceRequest.requester",
+        "path": "ServiceRequest.requester",
+        "min": 1,
+        "max": "1",
+       
+        "short": "Who/What is requesting the service",
+        "definition": "The individual, organization, or device requesting the service."
+      },
+      {
+        "id": "ServiceRequest.performer",
+        "path": "ServiceRequest.performer",
+        "min": 0,
+       
+        "short": "Who is to perform the request",
+        "definition": "The desired performer for the service request."
+      },
+      {
+        "id": "ServiceRequest.occurrence[x]",
+        "path": "ServiceRequest.occurrence[x]",
+        "min": 0,
+        "max": "1",
+        "short": "When service should occur",
+        "definition": "The date or time(s) the service is requested to occur."
+      },
+      {
+        "id": "ServiceRequest.basedOn",
+        "path": "ServiceRequest.basedOn",
+        "min": 0,
+        "max": "*",
+       
+        "short": "Fulfills plan or proposal",
+        "definition": "Plan or proposal fulfilled by this request."
+      },
+      {
+        "id": "ServiceRequest.replaces",
+        "path": "ServiceRequest.replaces",
+        "min": 0,
+        "max": "*",
+        
+        "short": "What request replaces",
+        "definition": "The request takes the place of the referenced completed or terminated request(s)."
+      }
+    ]
+  }
+  ,
+  "contained": [
+    
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-code",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-code",
+      "name": "ServiceRequestCodeSearchParameter",
+      "status": "active",
+      "code": "code",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "token",
+      "expression": "ServiceRequest.code",
+      "xpath": "f:ServiceRequest/f:code",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-encounter",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-encounter",
+      "name": "ServiceRequestEncounterSearchParameter",
+      "status": "active",
+      "code": "code",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "reference",
+      "expression": "ServiceRequest.code",
+      "xpath": "f:ServiceRequest/f:code",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-id",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-id",
+      "name": "ServiceRequestIdSearchParameter",
+      "status": "active",
+      "code": "_id",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "token",
+      "expression": "ServiceRequest._id",
+      "xpath": "f:ServiceRequest/f:_id",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-lastUpdated",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-lastUpdated",
+      "name": "ServiceRequestLastUpdatedSearchParameter",
+      "status": "active",
+      "code": "_lastUpdated",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "date",
+      "expression": "ServiceRequest._lastUpdated",
+      "xpath": "f:ServiceRequest/f:_lastUpdated",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-patient",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-patient",
+      "name": "ServiceRequestPatientSearchParameter",
+      "status": "active",
+      "code": "patient",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "reference",
+      "expression": "ServiceRequest.patient",
+      "xpath": "f:ServiceRequest/f:patient",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-patient-identifier",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-patient-identifier",
+      "name": "ServiceRequestPatientIdentifierSearchParameter",
+      "status": "active",
+      "code": "patient.identifier",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "token",
+      "expression": "ServiceRequest.patient.identifier",
+      "xpath": "f:ServiceRequest/f:patient.identifier",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-subject",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-subject",
+      "name": "ServiceRequestSubjectSearchParameter",
+      "status": "active",
+      "code": "subject",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "reference",
+      "expression": "ServiceRequest.subject",
+      "xpath": "f:ServiceRequest/f:subject",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "serviceRequest-subject-identifier",
+      "url": "http://example.com/core/SearchParameter/serviceRequest-subject-identifier",
+      "name": "ServiceRequestSubjectIdentifierSearchParameter",
+      "status": "active",
+      "code": "subject.identifier",
+      "base": [
+        "ServiceRequest"
+      ],
+      "target": [
+        "ServiceRequest"
+      ],
+      "type": "token",
+      "expression": "ServiceRequest.subject.identifier",
+      "xpath": "f:ServiceRequest/f:subject.identifier",
+      "xpathUsage": "normal"
+    }
+
+    ]
+}

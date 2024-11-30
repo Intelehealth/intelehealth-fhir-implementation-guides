@@ -1,0 +1,57 @@
+{
+  "resourceType": "Patient",
+  "id": "IHPatientExample",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/StructureDefinition/OMRSPatient"]
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "OpenMRS ID"
+          }
+        ],
+        "text": "OpenMRS ID"
+      },
+      "value": "4343534",
+      "extension": [
+        {
+          "url": "http://example.org/fhir/StructureDefinition/OMRSPatientIdentifierLocationExtension",
+          "valueReference": {
+            "reference": "Location/LocationExample",
+            "type": "Location",
+            "display": "Inpatient Ward"
+          }
+        }
+      ]
+    }
+  ],
+  "name": [
+    {
+      "family": "Jeannette",
+      "given": ["Ricky"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-12-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+256788232241"
+    }
+  ],
+  "address": [
+    {
+      "use": "home",
+      "city": "Washington",
+      "district": "Washington",
+      "country": "Washington"
+    }
+  ],
+  "active": true,
+  "deceasedBoolean": false
+}

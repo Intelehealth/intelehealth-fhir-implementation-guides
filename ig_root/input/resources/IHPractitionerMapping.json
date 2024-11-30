@@ -1,0 +1,144 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHPractitionerMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "description": "Practitioner resource represents a person who is directly or indirectly involved in the provisioning of healthcare. Practitioner covers all individuals who are engaged in the healthcare process and healthcare-related services as part of their formal responsibilities.",
+  "url": "http://example.org/fhir/StructureMap/IHPractitioner",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "PractitionerMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Practitioner in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms.Practitioner",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "identifier",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "identifier"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms.Practitioner",
+              "element": "identifier"
+            }
+          ]
+        },
+        {
+          "name": "active",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "active"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms.Practitioner",
+              "element": "retired"
+            }
+          ]
+        },
+        {
+          "name": "telecom",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "telecom"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms",
+              "element": "providerAttribute"
+            }
+          ]
+        },
+        {
+          "name": "address",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "address"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms",
+              "element": "Person.address"
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "name"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms",
+              "element": "Person.name"
+            }
+          ]
+        },
+        {
+          "name": "gender",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "gender"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms",
+              "element": "Person.gender"
+            }
+          ]
+        },
+        {
+          "name": "birthDate",
+          "source": [
+            {
+              "context": "Practitioner",
+              "element": "birthDate"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openrms",
+              "element": "Person.birthDate"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

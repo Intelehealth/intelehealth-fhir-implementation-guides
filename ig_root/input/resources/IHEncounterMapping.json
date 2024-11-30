@@ -1,0 +1,101 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHEncounterMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "url": "http://example.org/fhir/StructureMap/IHEncounterMapping",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Encounter",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "EncounterMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Encounter in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "Encounter",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Encounter",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "source": [
+            {
+              "context": "Encounter",
+              "element": "status"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Encounter",
+              "element": "status"
+            }
+          ]
+        },
+        {
+          "name": "subject",
+          "source": [
+            {
+              "context": "Encounter",
+              "element": "subject"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Encounter",
+              "element": "patient"
+            }
+          ]
+        },
+        {
+          "name": "participant",
+          "source": [
+            {
+              "context": "Encounter",
+              "element": "participant"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Encounter.encounterProvider"
+            }
+          ]
+        },
+        {
+          "name": "location",
+          "source": [
+            {
+              "context": "Encounter",
+              "element": "location"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Encounter.location"
+            }
+          ]
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}

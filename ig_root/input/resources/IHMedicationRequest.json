@@ -1,0 +1,310 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHMedicationRequest",
+  "url": "http://hl7.org/fhir/StructureDefinition/IHMedicationRequest",
+  "version": "1.0.0",
+  "name": "IH OpenMRS MedicationRequest",
+  "title": "IH OpenMRS Medication Request",
+  "status": "active",
+  "description": "A FHIR MedicationRequest as understood by OpenMRS",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "MedicationRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "MedicationRequest.identifier",
+        "path": "MedicationRequest.identifier",
+        "min": 1,
+        "max": "*",
+        "short": "Unique identifiers for this request",
+        "definition": "One or more identifiers assigned to this medication request."
+      },
+      {
+        "id": "MedicationRequest.status",
+        "path": "MedicationRequest.status",
+        "min": 1,
+        "max": "1",
+        
+        "short": "The status of the medication request",
+        "definition": "A code specifying the state of the order."
+      },
+      {
+        "id": "MedicationRequest.intent",
+        "path": "MedicationRequest.intent",
+        "min": 1,
+        "max": "1",
+       
+        "short": "The intent of the request",
+        "definition": "Indicates the overall intention of the medication request."
+      },
+      {
+        "id": "MedicationRequest.priority",
+        "path": "MedicationRequest.priority",
+        "min": 1,
+        "max": "1",
+       
+        "short": "The priority of the request",
+        "definition": "Indicates how quickly the medication request should be addressed."
+      },
+      {
+        "id": "MedicationRequest.medication[x]",
+        "path": "MedicationRequest.medication[x]",
+        "min": 1,
+        "max": "1",
+        
+        "short": "The medication to be administered",
+        "definition": "The medication that is being requested."
+      },
+      {
+        "id": "MedicationRequest.subject",
+        "path": "MedicationRequest.subject",
+        "min": 1,
+        "max": "1",
+       
+        "short": "The subject of the request",
+        "definition": "The patient or group that the medication request is for."
+      },
+      {
+        "id": "MedicationRequest.encounter",
+        "path": "MedicationRequest.encounter",
+        "min": 1,
+        "max": "1",
+        
+        "short": "Encounter created as part of",
+        "definition": "The healthcare event during which this request was created."
+      },
+      {
+        "id": "MedicationRequest.authoredOn",
+        "path": "MedicationRequest.authoredOn",
+        "min": 0,
+        "max": "1",
+        
+        "short": "When the request was created",
+        "definition": "The date (and optionally time) when the prescription was authored."
+      },
+      {
+        "id": "MedicationRequest.requester",
+        "path": "MedicationRequest.requester",
+        "min": 1,
+        "max": "1",
+        
+        "short": "Who/What requested the request",
+        "definition": "The healthcare provider or organization who authorized this medication request."
+      },
+      {
+        "id": "MedicationRequest.reasonCode",
+        "path": "MedicationRequest.reasonCode",
+        "min": 0,
+        "max": "*",
+        
+        "short": "Reason for request",
+        "definition": "Reason or indication for writing the prescription."
+      },
+      {
+        "id": "MedicationRequest.basedOn",
+        "path": "MedicationRequest.basedOn",
+        "min": 0,
+        "max": "*",
+        
+        "short": "What request fulfills",
+        "definition": "A plan or request that is fulfilled in whole or in part by this request."
+      },
+      {
+        "id": "MedicationRequest.note",
+        "path": "MedicationRequest.note",
+        "min": 0,
+        "max": "1",
+       
+        "short": "Additional information",
+        "definition": "Extra information about the prescription."
+      },
+      {
+        "id": "MedicationRequest.dosageInstruction",
+        "path": "MedicationRequest.dosageInstruction",
+        "min": 0,
+        "max": "*",
+       
+        "short": "How the medication should be taken",
+        "definition": "Specific details about how the medication is to be used by the patient."
+      },
+      {
+        "id": "MedicationRequest.dispenseRequest",
+        "path": "MedicationRequest.dispenseRequest",
+        "min": 0,
+        "max": "1",
+       
+        "short": "Medication supply authorization",
+        "definition": "Specific details for the dispense or supply action."
+      },
+      {
+        "id": "MedicationRequest.dispenseRequest.numberOfRepeatsAllowed",
+        "path": "MedicationRequest.dispenseRequest.numberOfRepeatsAllowed",
+        "min": 1,
+        "max": "1",
+        
+        "short": "Number of repeat supplies authorized",
+        "definition": "An integer specifying the number of times the prescription can be refilled."
+      },
+      {
+        "id": "MedicationRequest.dispenseRequest.quantity",
+        "path": "MedicationRequest.dispenseRequest.quantity",
+        "min": 1,
+        "max": "1",
+        
+        "short": "Medication supply size",
+        "definition": "The amount of medication to be supplied per dispensing event."
+      },
+      {
+        "id": "MedicationRequest.priorPrescription",
+        "path": "MedicationRequest.priorPrescription",
+        "min": 0,
+        "max": "1",
+        
+        "short": "Previous prescription",
+        "definition": "A link to a resource representing an earlier prescription or medication request."
+      }
+    ]
+  },
+  "contained": [
+    
+      {
+        "resourceType": "SearchParameter",
+        "id": "MedicationRequest-subject",
+        "url": "http://example.com/core/SearchParameter/MedicationRequest-subject",
+        "name": "MedicationRequestSubjectSearchParameter",
+        "status": "active",
+        "code": "subject",
+        "base": [
+          "MedicationRequest"
+        ],
+        "target": [
+          "MedicationRequest"
+        ],
+        "type": "reference",
+        "expression": "MedicationRequest.subject",
+        "xpath": "f:MedicationRequest/f:subject",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "MedicationRequest-subject-name",
+        "url": "http://example.com/core/SearchParameter/MedicationRequest-subject-name",
+        "name": "MedicationRequestSubjectNameSearchParameter",
+        "status": "active",
+        "code": "subject.name",
+        "base": [
+          "MedicationRequest"
+        ],
+        "target": [
+          "MedicationRequest"
+        ],
+        "type": "string",
+        "expression": "MedicationRequest.subject.name",
+        "xpath": "f:MedicationRequest/f:subject.name",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "MedicationRequest-patient-identifier",
+        "url": "http://example.com/core/SearchParameter/MedicationRequest-patient-identifier",
+        "name": "MedicationRequestPatientIdentifierSearchParameter",
+        "status": "active",
+        "code": "patient.identifier",
+        "base": [
+          "MedicationRequest"
+        ],
+        "target": [
+          "MedicationRequest"
+        ],
+        "type": "string",
+        "expression": "MedicationRequest.patient.identifier",
+        "xpath": "f:MedicationRequest/f:patient.identifier",
+        "xpathUsage": "normal"
+        
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "MedicationRequest-patient",
+        "url": "http://example.com/core/SearchParameter/MedicationRequest-patient",
+        "name": "MedicationRequestPatientSearchParameter",
+        "status": "active",
+        "description": "Searches for MedicationRequest by a given patient eg) /ws/fhir2/{release}/MedicationRequest?patient={patientUuid}",
+        "code": "patient",
+        "base": [
+          "MedicationRequest"
+        ],
+        "target": [
+          "MedicationRequest"
+        ],
+        "type": "reference",
+        "expression": "MedicationRequest.patient",
+        "xpath": "f:MedicationRequest/f:patient",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "MedicationRequest-medication",
+        "url": "http://example.com/core/SearchParameter/MedicationRequest-medication",
+        "name": "MedicationRequestmedicationSearchParameter",
+        "status": "active",
+        "description": "Searches for MedicationRequest by medication reference eg) /ws/fhir2/{release}/MedicationRequest?medication={reference}",
+        "code": "medication",
+        "base": [
+          "MedicationRequest"
+        ],
+        "target": [
+          "MedicationRequest"
+        ],
+        "type": "reference",
+        
+        "expression": "MedicationRequest.medication",
+        "xpath": "f:MedicationRequest/f:medication",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "MedicationRequest-lastUpdated",
+        "url": "http://example.com/core/SearchParameter/MedicationRequest-lastUpdated",
+        "name": "MedicationRequestLastUpdatedSearchParameter",
+        "status": "active",
+        "description": "Searches based on the MedicationRequest lastUpdated field for the MedicationRequest record eg) /ws/fhir2/{release}/MedicationRequest?_lastUpdated={date-range}",
+        "code": "_lastUpdated",
+        "base": [
+          "MedicationRequest"
+        ],
+        "target": [
+          "MedicationRequest"
+        ],
+        "type": "date",
+        "expression": "MedicationRequest._lastUpdated",
+        "xpath": "f:MedicationRequest/f:_lastUpdated",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "MedicationRequest-id",
+        "url": "http://example.com/core/SearchParameter/MedicationRequest-id",
+        "name": "MedicationRequestUuidSearchParameter",
+        "status": "active",
+        "description": "Searches based on the MedicationRequest uuid field for the MedicationRequest record eg) /ws/fhir2/{release}}/MedicationRequest?_id={uuid}",
+        "code": "_id",
+        "base": [
+          "MedicationRequest"
+        ],
+        "target": [
+          "MedicationRequest"
+        ],
+        "type": "token",
+        "expression": "MedicationRequest._id",
+        "xpath": "f:MedicationRequest/f:_id",
+        "xpathUsage": "normal"
+      }
+      
+    
+    
+  ]
+}

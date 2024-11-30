@@ -1,0 +1,243 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHLocationMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "url": "http://example.org/fhir/StructureMap/IHLocationMapping",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Location",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "IH Location Mapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Location in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "Location",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "source": [
+            {
+              "context": "Location",
+              "element": "name"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "name"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "description",
+          "source": [
+            {
+              "context": "Location",
+              "element": "description"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "description"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "address.line",
+          "source": [
+            {
+              "context": "Location",
+              "element": "address.line"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "address1"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "address.city",
+          "source": [
+            {
+              "context": "Location",
+              "element": "address.city"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "cityVillage"
+            }
+          ]
+        },
+        {
+          "name": "address.state",
+          "source": [
+            {
+              "context": "Location",
+              "element": "address.city"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "stateProvince"
+            }
+          ]
+        },
+        {
+          "name": "address.country",
+          "source": [
+            {
+              "context": "Location",
+              "element": "address.country"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "country"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "address.postalCode",
+          "source": [
+            {
+              "context": "Location",
+              "element": "address.postalCode"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "postalCode"
+            }
+          ]
+        },
+        {
+          "name": "address.district",
+          "source": [
+            {
+              "context": "Location",
+              "element": "address.district"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "countyDistrict"
+            }
+          ]
+        },
+        {
+          "name": "position.latitude",
+          "source": [
+            {
+              "context": "Location",
+              "element": "position.latitude"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "latitude"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "position.longitude",
+          "source": [
+            {
+              "context": "Location",
+              "element": "position.longitude"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "longintude"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "source": [
+            {
+              "context": "Location",
+              "element": "status"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "retired"
+            }
+          ]
+        },
+        {
+          "name": "partOf",
+          "source": [
+            {
+              "context": "Location",
+              "element": "partOf"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "parentLocation"
+            }
+          ]
+        },
+        {
+          "name": "partOf",
+          "source": [
+            {
+              "context": "Location",
+              "element": "partOf"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Location",
+              "element": "parentLocation"
+            }
+          ]
+        }
+        
+        
+        
+        
+        
+      ]
+    }
+  ]
+}
