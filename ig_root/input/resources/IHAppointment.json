@@ -1,0 +1,142 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHAppointment",
+  "url": "http://example.org/fhir/StructureDefinition/IHAppointment",
+  "version": "1.0.0",
+  "name": "IH Appointment",
+  "title": "Appointment Implementation Guide",
+  "status": "active",
+  "experimental": false,
+  "date": "2024-11-28T00:00:00+00:00",
+
+  "description": "StructureDefinition for customizing the Appointment resource for the Example IG.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Appointment",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Appointment",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Appointment",
+        "path": "Appointment",
+        "short": "Customized Appointment for Example IG",
+        "definition": "This is a customized Appointment resource tailored for Example Implementation Guide.",
+        "min": 0,
+        "max": "*"
+      },
+      { "id": "Appointment.meta", "path": "Appointment.meta", "min": 0, "max": "1" },
+      {
+        "id": "Appointment.meta.tag",
+        "path": "Appointment.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "Appointment.status",
+        "path": "Appointment.status",
+        "short": "Required status of the appointment",
+        "definition": "Status of the appointment, restricted to booked or cancelled.",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/appointmentstatus"
+        }
+      },
+      {
+        "id": "Appointment.participant.actor",
+        "path": "Appointment.participant.actor",
+        "short": "Reference to Patient or Practitioner",
+        "definition": "Actor of the appointment must be either a Patient or a Practitioner.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient",
+              "http://hl7.org/fhir/StructureDefinition/Practitioner"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Appointment.serviceCategory",
+        "path": "Appointment.serviceCategory",
+        "short": "Broad category of service provided",
+        "definition": "A broad categorization of the service that is to be performed during this appointment.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/service-category"
+        }
+      },
+      {
+        "id": "Appointment.serviceType",
+        "path": "Appointment.serviceType",
+        "short": "Specific service to be provided",
+        "definition": "The specific service that is to be performed during this appointment.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/service-type"
+        }
+      },
+      {
+        "id": "Appointment.specialty",
+        "path": "Appointment.specialty",
+        "short": "Specialty of the service",
+        "definition": "The specialty of a practitioner that would be required to perform the service requested in this appointment.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/ValueSet/c80-practice-codes"
+        }
+      },
+      {
+        "id": "Appointment.appointmentType",
+        "path": "Appointment.appointmentType",
+        "short": "The style of appointment or patient flow",
+        "definition": "The style of appointment or patient flow that will be used in this appointment.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/appointment-type"
+        }
+      }
+    ]
+  }
+  
+}

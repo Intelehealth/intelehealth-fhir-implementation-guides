@@ -1,0 +1,101 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHMedicationMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "url": "http://example.org/fhir/StructureMap/IHMedicationMapping",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Medication",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "MedicationMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Encounter in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "Medication",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Drug",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "code",
+          "source": [
+            {
+              "context": "Medication",
+              "element": "code"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Concept.code"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "source": [
+            {
+              "context": "Medication",
+              "element": "status"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Medication",
+              "element": "MedicationStatus"
+            }
+          ]
+        },
+        {
+          "name": "form",
+          "source": [
+            {
+              "context": "Medication",
+              "element": "form"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Concept.code"
+            }
+          ]
+        },
+        {
+          "name": "ingredient",
+          "source": [
+            {
+              "context": "Medication",
+              "element": "ingredient"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Concept.code"
+            }
+          ]
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}

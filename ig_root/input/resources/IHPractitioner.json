@@ -1,0 +1,173 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHPractitioner",
+  "url": "http://hl7.org/fhir/StructureDefinition/IHPractitioner",
+  "version": "1.0.0",
+  "name": "IH Practitioner",
+  "title": "OpenMRS Practitioner",
+  "status": "draft",
+  "description": "A FHIR Practitioner as understood by OpenMRS",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Practitioner",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Practitioner.identifier",
+        "path": "Practitioner.identifier",
+        "min": 1,
+        "max": "1"
+      },
+      { "id": "Practitioner.meta", "path": "Practitioner.meta", "min": 0, "max": "1" },
+      {
+        "id": "Practitioner.meta.tag",
+        "path": "Practitioner.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "Practitioner.id",
+        "path": "Practitioner.id",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.active",
+        "path": "Practitioner.active",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.name",
+        "path": "Practitioner.name",
+        "min": 1,
+        "max": "*"
+      },
+      {
+        "id": "Practitioner.birthDate",
+        "path": "Practitioner.birthDate",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.gender",
+        "path": "Practitioner.gender",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.address",
+        "path": "Practitioner.address",
+        "min": 1,
+        "max": "*"
+      },
+      {
+        "id": "Practitioner.telecom",
+        "path": "Practitioner.telecom",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.meta.lastUpdated",
+        "path": "Practitioner.meta.lastUpdated",
+        "min": 0,
+        "max": "1"
+      }
+    ]
+  
+},
+"contained": [
+  {
+    "resourceType": "SearchParameter",
+    "id": "practitioner-name",
+    "name": "PractitionerNameSearchParameter",
+    "status": "active",
+    "description": "Searches for Practitioner based on the Practitioner's full or partial name eg) /ws/fhir2/{release}/Practitioner?name={name}",
+    "code": "practitioner.name",
+    "base": ["Practitioner"],
+    "type": "string",
+    "target": ["Practitioner"],
+    "expression": "Practitioner.name",
+    "xpath": "f:Practitioner/f:name",
+    "xpathUsage": "normal"
+  },{
+    "resourceType": "SearchParameter",
+    "id": "practitioner-given",
+    "name": "PractitionerGivenNameSearchParameter",
+    "status": "active",
+    "description": "Searches for Practitioner based on the Practitioner's given name(s) eg) /ws/fhir2/{release}/Practitioner?given={givenName}",
+    "code": "practitioner.given",
+    "base": ["Practitioner"],
+    "type": "string",
+    "target": ["Practitioner"],
+    "expression": "Practitioner.given",
+    "xpath": "f:Practitioner/f:given",
+    "xpathUsage": "normal"
+  },
+  {
+    "resourceType": "SearchParameter",
+    "id": "practitioner-family",
+    "name": "PractitionerFamilyNameSearchParameter",
+    "status": "active",
+    "description": "Searches for Practitioner based on the Practitioner's family name eg) /ws/fhir2/{release}/Practitioner?family={familyName}",
+    "code": "practitioner.family",
+    "base": ["Practitioner"],
+    "type": "string",
+    "target": ["Practitioner"],
+    "expression": "Practitioner.family",
+    "xpath": "f:Practitioner/f:family",
+    "xpathUsage": "normal"
+  },{
+    "resourceType": "SearchParameter",
+    "id": "practitioner-identifier",
+    "name": "PractitionerIdentifierSearchParameter",
+    "status": "active",
+    "description": "Searches for Practitioner by a given Practitioner eg) /ws/fhir2/{release}/Practitioner?identifier={identifier}",
+    "code": "practitioner.identifier",
+    "base": ["Practitioner"],
+    "type": "token",
+    "target": ["Practitioner"],
+    "expression": "Practitioner.identifier",
+    "xpath": "f:Practitioner/f:identifier",
+    "xpathUsage": "normal"
+  },{
+    "resourceType": "SearchParameter",
+    "id": "practitioner-address-city",
+    "name": "PractitionerCitySearchParameter",
+    "status": "active",
+    "description": "Searches based on the address-city field for the Practitioner record eg) /ws/fhir2/{release}/Practitioner?address-city={city}",
+    "code": "address-city",
+    "base": ["Practitioner"],
+    "type": "string",
+    "target": ["Practitioner"],
+    "expression": "Practitioner.address-city",
+    "xpath": "f:Practitioner/f:address-city",
+    "xpathUsage": "normal"
+  },{
+    "resourceType": "SearchParameter",
+    "id": "practitioner-lastUpdated",
+    "name": "PractitionerLastUpdatedSearchParameter",
+    "status": "active",
+    "description": "Searches based on the Practitioner lastUpdated field for the Practitioner record eg) /ws/fhir2/{release}/Practitioner?_lastUpdated={date-range}",
+    "code": "_lastUpdated",
+    "base": ["Practitioner"],
+    "type": "date",
+    "target": ["Practitioner"],
+    "expression": "Practitioner._lastUpdated",
+    "xpath": "f:Practitioner/f:_lastUpdated",
+    "xpathUsage": "normal"
+  }
+  
+
+
+  ]
+}

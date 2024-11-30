@@ -1,0 +1,26 @@
+{
+  "resourceType": "Task",
+  "id": "IHTaskExample",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/StructureDefinition/IHTask"]
+  },
+  "status": "completed",
+  "intent": "order",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/example-openmrs-ServiceRequest"
+    }
+  ],
+  "for": {
+    "reference": "Patient/example-openmrs-Patient"
+  },
+  "authoredOn": "2021-02-20",
+  "lastModified": "2021-02-21",
+  "owner": {
+    "reference": "Organization/example-openmrs-Organization",
+    "display": "Clinical Laboratory @ Acme Hospital"
+  },
+  "encounter": {
+    "reference": "Encounter/EncounterExample"
+  }
+}

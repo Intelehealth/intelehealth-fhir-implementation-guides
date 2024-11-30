@@ -1,0 +1,408 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHObservation",
+  "url": "http://hl7.org/fhir/StructureDefinition/OpenMRS-observation",
+  "version": "1.0.0",
+  "name": "IH Observation",
+  "title": "OpenMRS Observation",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "min": 1,
+        "max": "1"
+      },
+      { "id": "Observation.meta", "path": "Observation.meta", "min": 0, "max": "1" },
+      {
+        "id": "Observation.meta.tag",
+        "path": "Observation.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      {
+        "id": "Observation.subject",
+        "path": "Observation.subject",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Observation.category",
+        "path": "Observation.category",
+        "min": 1,
+        "max": "*"
+      },
+      {
+        "id": "Observation.status",
+        "path": "Observation.status",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.interpretation",
+        "path": "Observation.interpretation",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Observation.basedOn",
+        "path": "Observation.basedOn",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/IHServiceRequest"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.encounter",
+        "path": "Observation.encounter",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Observation.referenceRange",
+        "path": "Observation.referenceRange",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Observation.referenceRange.high",
+        "path": "Observation.referenceRange.high",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.referenceRange.low",
+        "path": "Observation.referenceRange.low",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.referenceRange.type",
+        "path": "Observation.referenceRange.type",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Observation.referenceRange.modifierExtension",
+        "path": "Observation.referenceRange.modifierExtension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.referenceRange.appliesTo",
+        "path": "Observation.referenceRange.appliesTo",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.referenceRange.text",
+        "path": "Observation.referenceRange.text",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.referenceRange.age",
+        "path": "Observation.referenceRange.age",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.issued",
+        "path": "Observation.issued",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.performer",
+        "path": "Observation.performer",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.dataAbsentReason",
+        "path": "Observation.dataAbsentReason",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.bodySite",
+        "path": "Observation.bodySite",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.method",
+        "path": "Observation.method",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.specimen",
+        "path": "Observation.specimen",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "id": "Observation.device",
+        "path": "Observation.device",
+        "min": 0,
+        "max": "0"
+      }
+    ]
+  }
+  ,
+  "contained": [
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-date",
+      "name": "ObservationDateSearchParameter",
+      "status": "active",
+      "description": "Searches for observations by the observation date and time eg) /ws/fhir2/{release}/Observation?date={date}",
+      "code": "date",
+      "base": ["Observation"],
+      "type": "date",
+      "target": ["Observation"],
+      "expression": "Observation.date",
+      "xpath": "f:Observation/f:date",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-concept-code",
+      "name": "ObservationCodeSearchParameter",
+      "status": "active",
+      "description": "Searches for observations with particular codes (concepts) eg) /ws/fhir2/{release}/Observation?code={code}",
+      "code": "code",
+      "base": ["Observation"],
+      "type": "token",
+      "target": ["Observation"],
+      "expression": "Observation.code",
+      "xpath": "f:Observation/f:code",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-category",
+      "name": "ObservationCategorySearchParameter",
+      "status": "active",
+      "description": "Searches for observations by the observation category eg) /ws/fhir2/{release}/Observation?category={category}",
+      "code": "category",
+      "base": ["Observation"],
+      "type": "token",
+      "target": ["Observation"],
+      "expression": "Observation.category",
+      "xpath": "f:Observation/f:category",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-encounter",
+      "name": "ObservationEncounterSearchParameter",
+      "status": "active",
+      "description": "Searches for observations by the observation encounter eg) /ws/fhir2/{release}/Observation?encounter.type={type}",
+      "code": "encounter",
+      "base": ["Observation"],
+      "type": "token",
+      "target": ["Observation"],
+      "expression": "Observation.encounter",
+      "xpath": "f:Observation/f:encounter",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-subject",
+      "name": "ObservationSubjectSearchParameter",
+      "status": "active",
+      "description": "Searches for observations by a given subject eg) /ws/fhir2/{release}/Observation?subject:Patient={patientUuid}",
+      "code": "subject",
+      "base": ["Observation"],
+      "type": "reference",
+      "target": ["Observation"],
+      "expression": "Observation.subject",
+      "xpath": "f:Observation/f:subject",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-subject-identifier",
+      "name": "ObservationSubjectIdentifierSearchParameter",
+      "status": "active",
+      "description": "Searches for observations by the patient identifier eg) /ws/fhir2/{release}/Observation?subject:Patient.identifier={identifier}",
+      "code": "subject.identifier",
+      "base": ["Observation"],
+      "type": "token",
+      "target": ["Observation"],
+      "expression": "Observation.subject.identifier",
+      "xpath": "f:Observation/f:subject.identifier",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-subject-given",
+      "name": "ObservationSubjectGivenSearchParameter",
+      "status": "active",
+      "description": "Searches for observations based on the patient's given name(s) eg) /ws/fhir2/{release}/Observation?subject:Patient.given={givenName}",
+      "code": "subject.given",
+      "base": ["Observation"],
+      "type": "string",
+      "target": ["Observation"],
+      "expression": "Observation.subject.given",
+      "xpath": "f:Observation/f:subject.given",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-subject-family",
+      "name": "ObservationSubjectFamilySearchParameter",
+      "status": "active",
+      "description": "Searches for observations based on the patient's family name eg) /ws/fhir2/{release}/Observation?subject:Patient.family={familyName}",
+      "code": "subject.family",
+      "base": ["Observation"],
+      "type": "string",
+      "target": ["Observation"],
+      "expression": "Observation.subject.family",
+      "xpath": "f:Observation/f:subject.family",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-subject-name",
+      "name": "ObservationSubjectNameSearchParameter",
+      "status": "active",
+      "description": "Searches for observations based on the patient's full or partial name eg) /ws/fhir2/{release}/Observation?subject:Patient.name={name}",
+      "code": "subject.name",
+      "base": ["Observation"],
+      "type": "string",
+      "target": ["Observation"],
+      "expression": "Observation.subject.name",
+      "xpath": "f:Observation/f:subject.name",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-patient",
+      "name": "ObservationPatientSearchParameter",
+      "status": "active",
+      "description": "Searches for observations by a given patient eg) /ws/fhir2/{release}/Observation?patient={uuid}",
+      "code": "patient",
+      "base": ["Observation"],
+      "type": "reference",
+      "target": ["Observation"],
+      "expression": "Observation.patient",
+      "xpath": "f:Observation/f:patient",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-patient-identifier",
+      "name": "ObservationPatientIdentifierSearchParameter",
+      "status": "active",
+      "description": "Searches for observations by a given patient eg) /ws/fhir2/{release}/Observation?patient.identifier={identifier}",
+      "code": "patient.identifier",
+      "base": ["Observation"],
+      "type": "token",
+      "target": ["Observation"],
+      "expression": "Observation.patient.identifier",
+      "xpath": "f:Observation/f:patient.identifier",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-patient.given",
+      "name": "ObservationPatientGivenNameSearchParameter",
+      "status": "active",
+      "description": "Searches for observations based on the patient's given name(s) eg) /ws/fhir2/{release}/Observation?patient.given={givenName}",
+      "code": "patient.given",
+      "base": ["Observation"],
+      "type": "string",
+      "target": ["Observation"],
+      "expression": "Observation.patient.given",
+      "xpath": "f:Observation/f:patient.given",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-patient.family",
+      "name": "ObservationPatientFamilyNameSearchParameter",
+      "status": "active",
+      "description": "Searches for observations based on the patient's family name eg) /ws/fhir2/{release}/Observation?patient.family={familyName}",
+      "code": "patient.family",
+      "base": ["Observation"],
+      "type": "string",
+      "target": ["Observation"],
+      "expression": "Observation.patient.family",
+      "xpath": "f:Observation/f:patient.family",
+      "xpathUsage": "normal"
+    },
+    
+    
+   
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-id",
+      "name": "ObservationIdSearchParameter",
+      "status": "active",
+      "description": "Searches based on the exact UUID of the person record eg) /ws/fhir2/{release}/Observation?_id={uuid}",
+      "code": "_id",
+      "base": ["Observation"],
+      "type": "token",
+      "target": ["Observation"],
+      "expression": "Observation._id",
+      "xpath": "f:Observation/f:_id",
+      "xpathUsage": "normal"
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "observation-lastUpdated",
+      "name": "ObservationLastUpdatedSearchParameter",
+      "status": "active",
+      "description": "Searches based on the the dateCreated field for the observation record eg) /ws/fhir2/{release}/Observation?_lastUpdated={date-range}",
+      "code": "_lastUpdated",
+      "base": ["Observation"],
+      "type": "date",
+      "target": ["Observation"],
+      "expression": "Observation._lastUpdated",
+      "xpath": "f:Observation/f:_lastUpdated",
+      "xpathUsage": "normal"
+
+    }
+  ]
+  
+}

@@ -1,0 +1,207 @@
+{
+    "resourceType": "StructureDefinition",
+    "id": "IHPatient",
+    "url": "http://hl7.org/fhir/StructureDefinition/ExamplePatient",
+    "version": "1.0.0",
+    "name": "IHPatient",
+    "title": "IH Patient Profile",
+    "status": "draft",
+    "description": "A custom Patient profile for demonstration purposes.",
+    "fhirVersion": "4.0.1",
+    "kind": "resource",
+    "abstract": false,
+    "type": "Patient",
+    "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Patient",
+    "derivation": "constraint",
+    "differential": {
+      "element": [
+        {
+          "id": "Patient.id",
+          "path": "Patient.id",
+          "min": 1,
+          "max": "1"
+        },
+        { "id": "Patient.meta", "path": "Patient.meta", "min": 0, "max": "1" },
+        {
+          "id": "Patient.meta.tag",
+          "path": "Patient.meta.tag",
+          "min": 0,
+          "max": "*",
+          "slicing": {
+            "discriminator": [
+              { "type": "value", "path": "system" }
+            ],
+            "rules": "closed"
+          }
+        },
+        {
+          "id": "Patient.identifier",
+          "path": "Patient.identifier",
+          "min": 1,
+          "max": "*",
+          "slicing": {
+            "discriminator": [
+              {
+                "type": "value",
+                "path": "system"
+              }
+            ],
+            "rules": "open"
+          }
+          
+        },
+        {
+          "id": "Patient.active",
+          "path": "Patient.active",
+          "min": 1,
+          "max": "1",
+          "fixedBoolean": true
+        },
+        {
+          "id": "Patient.name",
+          "path": "Patient.name",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Patient.gender",
+          "path": "Patient.gender",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Patient.birthDate",
+          "path": "Patient.birthDate",
+          "min": 1,
+          "max": "1"
+        },
+        {
+          "id": "Patient.deceased[x]",
+          "path": "Patient.deceased[x]",
+          "min": 0,
+          "max": "1"
+        },
+        {
+          "id": "Patient.address",
+          "path": "Patient.address",
+          "min": 0,
+          "max": "*"
+        },
+        {
+          "id": "Patient.telecom",
+          "path": "Patient.telecom",
+          "min": 1,
+          "max": "*",
+          "type": [
+            {
+              "code": "ContactPoint"
+            }
+          ]
+          
+        }
+      ]
+    },
+    "contained": [
+      {
+        "resourceType": "SearchParameter",
+        "id": "patient-gender",
+        "url": "http://hl7.org/fhir/SearchParameter/ExamplePatient-gender",
+        "name": "ExamplePatientGender",
+        "status": "active",
+        "description": "Search based on the patient's gender.",
+        "code": "gender",
+        "base": ["Patient"],
+        "type": "token",
+        "expression": "Patient.gender",
+        "xpath": "f:Patient/f:gender",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "patient-birthdate",
+        "url": "http://hl7.org/fhir/SearchParameter/ExamplePatient-birthdate",
+        "name": "ExamplePatientBirthDate",
+        "status": "active",
+        "description": "Search based on the patient's birth date.",
+        "code": "birthdate",
+        "base": ["Patient"],
+        "type": "date",
+        "expression": "Patient.birthDate",
+        "xpath": "f:Patient/f:birthDate",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "patient-name",
+        "name": "PatientNameSearchParameter",
+        "status": "active",
+        "description": "Searches for patient based on patient's full or partial name eg) /ws/fhir2/{release}/Patient?name={name}",
+        "code": "name",
+        "base": ["Patient"],
+        "type": "string",
+        "target": ["Patient"],
+        "expression": "Patient.name",
+        "xpath": "f:Patient/f:name",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "patient-death-date",
+        "name": "PatientDeathDateSearchParameter",
+        "status": "active",
+        "description": "Searches based on the death date of the patient (if any) eg) /ws/fhir2/{release}/Patient?death-date={date}",
+        "code": "death-date",
+        "base": ["Patient"],
+        "type": "date",
+        "target": ["Patient"],
+        "expression": "Patient.death-date",
+        "xpath": "f:Patient/f:death-date",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "patient-address-city",
+        "name": "PatientCitySearchParameter",
+        "status": "active",
+        "description": "Searches based on the patient's recorded city/village of address eg) /ws/fhir2/{release}/Patient?address-city={city}",
+        "code": "address-city",
+        "base": ["Patient"],
+        "type": "string",
+        "target": ["Patient"],
+        "expression": "Patient.address-city",
+        "xpath": "f:Patient/f:address-city",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "patient-address-state",
+        "name": "PatientStateSearchParameter",
+        "status": "active",
+        "description": "Searches based on the patient's recorded state/province of address eg) /ws/fhir2/{release}/Patient?address-state={state}",
+        "code": "address-state",
+        "base": ["Patient"],
+        "type": "string",
+        "target": ["Patient"],
+        "expression": "Patient.address-state",
+        "xpath": "f:Patient/f:address-state",
+        "xpathUsage": "normal"
+      },
+      {
+        "resourceType": "SearchParameter",
+        "id": "patient-lastUpdated",
+        "name": "PatientLastUpdatedSearchParameter",
+        "status": "active",
+        "description": "Searches based on the the dateCreated or dateUpdated field for the patient record eg) /ws/fhir2/{release}/Patient?_lastUpdated={date-range}",
+        "code": "_lastUpdated",
+        "base": ["Patient"],
+        "type": "date",
+        "target": ["Patient"],
+        "expression": "Patient._lastUpdated",
+        "xpath": "f:Patient/f:_lastUpdated",
+        "xpathUsage": "normal"
+      }
+      
+      
+    ]
+  }
+  

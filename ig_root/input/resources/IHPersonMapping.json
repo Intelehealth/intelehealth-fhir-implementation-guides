@@ -1,0 +1,162 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHPersonMapping",
+  "title": "FHIR HL7 vs OMRS",
+  "description": "Person is a FHIR resource that is used to represent demographics and administrative information about a person independent of a specific health-related context. FHIR Persons are mapped to OpenMRS Person objects.",
+  "url": "http://example.org/fhir/StructureMap/IHPersonMapping",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Person",
+      "mode": "target"
+    },
+    {
+      "url": "http://example.com/fhir/StructureDefinition/IHPerson",
+      "mode": "source"
+    }
+  ],
+  "mapping": [
+    {
+      "name": "PersonMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Person in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "identifier",
+          "source": [
+            {
+              "context": "Person",
+              "element": "identifier"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Person",
+              "element": "identifier"
+            }
+          ]
+        },
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "Person",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Person",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "source": [
+            {
+              "context": "Person",
+              "element": "name"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Person.name"
+            }
+          ]
+        },
+        {
+          "name": "telecom",
+          "source": [
+            {
+              "context": "Person",
+              "element": "telecom"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Person.personAttribute",
+              "parameter": [
+                {
+                  "valueString": "The attribute used is determined by the fhir2.personContactPointAttributeTypeUuid global property"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "gender",
+          "source": [
+            {
+              "context": "Person",
+              "element": "gender"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Person.gender"
+            }
+          ]
+        },
+        {
+          "name": "birthDate",
+          "source": [
+            {
+              "context": "Person",
+              "element": "birthDate"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Person.birthDate",
+              "parameter": [
+                {
+                  "valueString": "Estimated birthdates report month and year for people 5 and under or only year for people older than 5"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "address",
+          "source": [
+            {
+              "context": "Person",
+              "element": "address"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Person.address"
+            }
+          ]
+        },
+        {
+          "name": "link",
+          "source": [
+            {
+              "context": "Person",
+              "element": "link"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Person",
+              "element": "link",
+              "parameter": [
+                {
+                  "valueString": "Person is a Patient? link to Patient : nothing"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

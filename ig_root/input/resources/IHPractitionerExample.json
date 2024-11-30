@@ -1,0 +1,36 @@
+{
+  "resourceType": "Practitioner",
+  "id": "IHPractitionerExample",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/StructureDefinition/IHPractitioner"]
+  },
+  "identifier": [
+    {
+      "value": "1001"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "family": "King",
+      "given": ["Ajim"],
+      "suffix": ["Dr"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-12-25",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(545-243-545-1)"
+    }
+  ],
+  "address": [
+    {
+      "use": "home",
+      "line": ["534 Erewhon St"],
+      "city": "PleasantVille",
+      "state": "Vic"
+    }
+  ]
+}

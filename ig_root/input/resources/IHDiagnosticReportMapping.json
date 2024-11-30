@@ -1,0 +1,135 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHDiagnosticReportMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "url": "http://example.org/fhir/StructureMap/IHDiagnosticReportMapping",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "DiagnosticReportMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to DiagnosticReport in OMRS FHIR2(FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "DiagnosticReport",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Obs",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "source": [
+            {
+              "context": "DiagnosticReport",
+              "element": "status"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.status"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "code",
+          "source": [
+            {
+              "context": "DiagnosticReport",
+              "element": "code"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Obs",
+              "element": "concept"
+            }
+          ]
+        },
+        {
+          "name": "subject",
+          "source": [
+            {
+              "context": "DiagnosticReport",
+              "element": "subject"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Obs",
+              "element": "person"
+            }
+          ]
+        },
+        {
+          "name": "issued",
+          "source": [
+            {
+              "context": "DiagnosticReport",
+              "element": "issued"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.dateCreated"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "encounter",
+          "source": [
+            {
+              "context": "DiagnosticReport",
+              "element": "encounter"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.encounter"
+            }
+          ]
+        },
+        
+        
+        {
+          "name": "result",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "result"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.groupMembers"
+            }
+          ]
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}

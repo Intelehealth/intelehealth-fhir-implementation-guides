@@ -1,0 +1,164 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHObservationMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "description": "Observation resource represents a person who is directly or indirectly involved in the provisioning of healthcare. Practitioner covers all individuals who are engaged in the healthcare process and healthcare-related services as part of their formal responsibilities.",
+  "url": "http://example.org/fhir/StructureMap/IHObservationMapping",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Observation",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "ObservationMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Observation in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Obs",
+              "element": "uuid"
+            }
+          ]
+        },
+        {
+          "name": "code",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "code"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Obs",
+              "element": "concept"
+            }
+          ]
+        },
+        {
+          "name": "category",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "category"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs.Obs",
+              "element": "concept"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "status"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.status"
+            }
+          ]
+        },
+        {
+          "name": "interpretation",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "interpretation"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.interpretation"
+            }
+          ]
+        },
+        {
+          "name": "issued",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "issued"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.dateCreated"
+            }
+          ]
+        },
+        {
+          "name": "basedOn",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "basedOn"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.order"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "subject",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "subject"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.person"
+            }
+          ]
+        }
+        ,
+        {
+          "name": "value[x]",
+          "source": [
+            {
+              "context": "Observation",
+              "element": "value[x]"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Obs.value"
+            }
+          ]
+        }
+        
+        
+        
+      ]
+    }
+  ]
+}

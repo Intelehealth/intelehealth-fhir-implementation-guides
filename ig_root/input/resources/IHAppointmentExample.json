@@ -1,0 +1,78 @@
+{
+  "resourceType": "Appointment",
+  "id": "IHAppointmentExample",
+  "meta": {
+    "profile": [
+      "http://example.org/fhir/StructureDefinition/IHAppointment"
+    ]
+  },
+  "status": "booked",
+  "serviceCategory": [
+    {
+      "coding": [
+        {
+          "system": "http://example.org/service-category",
+          "code": "medication-review",
+          "display": "Medication Review"
+        }
+      ],
+      "text": "Medication Review Services"
+    }
+  ],
+  "serviceType": [
+    {
+      "coding": [
+        {
+          "system": "http://example.org/service-type",
+          "code": "general-practice",
+          "display": "General Practice Consultation"
+        }
+      ],
+      "text": "General Practice"
+    }
+  ],
+  "specialty": [
+    {
+      "coding": [
+        {
+          "system": "http://example.org/specialty",
+          "code": "cardiology",
+          "display": "Cardiology"
+        }
+      ],
+      "text": "Cardiology Specialist"
+    }
+  ],
+  "appointmentType": {
+    "coding": [
+      {
+        "system": "http://example.org/appointment-type",
+        "code": "routine-checkup",
+        "display": "Routine Checkup"
+      }
+    ],
+    "text": "Routine Appointment"
+  },
+  "start": "2024-12-01T10:00:00Z",
+  "end": "2024-12-01T10:30:00Z",
+  "participant": [
+    {
+      "actor": {
+        "reference": "Patient/example",
+        "display": "John Doe"
+      },
+      "required": "required",
+      "status": "accepted"
+    },
+    {
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr. Jane Smith"
+      },
+      "required": "required",
+      "status": "accepted"
+    }
+  ],
+  "created": "2024-11-28T15:00:00Z",
+  "description": "Routine checkup for medication review with a cardiology specialist."
+}

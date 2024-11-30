@@ -1,0 +1,191 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHTaskMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "url": "http://example.org/fhir/StructureMap/IHTask",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Task",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "TaskMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Task in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "Task",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Task.uuid"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "source": [
+            {
+              "context": "Task",
+              "element": "status"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.status"
+            }
+          ]
+        },
+        {
+          "name": "intent",
+          "source": [
+            {
+              "context": "Task",
+              "element": "intent"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.intent"
+            }
+          ]
+        },
+        {
+          "name": "basedOn",
+          "source": [
+            {
+              "context": "Task",
+              "element": "basedOn"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.basedOn"
+            }
+          ]
+        },
+        {
+          "name": "encounter",
+          "source": [
+            {
+              "context": "Task",
+              "element": "encounter"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.encounter"
+            }
+          ]
+        },
+        {
+          "name": "for",
+          "source": [
+            {
+              "context": "Task",
+              "element": "for"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.for"
+            }
+          ]
+        },
+        {
+          "name": "owner",
+          "source": [
+            {
+              "context": "Task",
+              "element": "owner"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.owner"
+            }
+          ]
+        },
+        {
+          "name": "input",
+          "source": [
+            {
+              "context": "Task",
+              "element": "input"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.input"
+            }
+          ]
+        },
+        {
+          "name": "output",
+          "source": [
+            {
+              "context": "Task",
+              "element": "output"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.output"
+            }
+          ]
+        },
+        {
+          "name": "authoredOn",
+          "source": [
+            {
+              "context": "Task",
+              "element": "authoredOn"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.dateCreated"
+            }
+          ]
+        },
+        {
+          "name": "lastModified",
+          "source": [
+            {
+              "context": "Task",
+              "element": "lastModified"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "FhirTask.dateChanged"
+            }
+          ]
+        }
+
+
+
+      ]
+    }
+  ]
+}

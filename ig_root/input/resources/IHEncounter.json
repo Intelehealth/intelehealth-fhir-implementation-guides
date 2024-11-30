@@ -1,0 +1,218 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IHEncounter",
+  "url": "http://hl7.org/fhir/StructureDefinition/ih-encounter",
+  "version": "1.0.0",
+  "name": "IHEncounter",
+  "title": "IH OpenMRS Encounter",
+  "status": "draft",
+  "description": "A FHIR Encounter as understood by OpenMRS",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Encounter",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Encounter",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      { "id": "Encounter.id", "path": "Encounter.id", "min": 1, "max": "1" },
+      { "id": "Encounter.meta", "path": "Encounter.meta", "min": 0, "max": "1" },
+      {
+        "id": "Encounter.meta.tag",
+        "path": "Encounter.meta.tag",
+        "min": 0,
+        "max": "*",
+        "slicing": {
+          "discriminator": [
+            { "type": "value", "path": "system" }
+          ],
+          "rules": "closed"
+        }
+      },
+      { "id": "Encounter.status", "path": "Encounter.status", "min": 1, "max": "1" },
+      { "id": "Encounter.class", "path": "Encounter.class", "min": 1, "max": "1" },
+      { "id": "Encounter.type", "path": "Encounter.type", "min": 1, "max": "*" },
+      { "id": "Encounter.subject", "path": "Encounter.subject", "min": 1, "max": "1"
+       
+       },
+      { "id": "Encounter.participant", "path": "Encounter.participant", "min": 0, "max": "*" },
+      { "id": "Encounter.period", "path": "Encounter.period", "min": 1, "max": "1" },
+      {
+        "id": "Encounter.location.location",
+        "path": "Encounter.location.location",
+        "min": 1,
+        "max": "1"
+        
+      },
+      {
+        "id": "Encounter.partOf",
+        "path": "Encounter.partOf"
+        
+      }
+    ]
+  }
+  ,
+  "contained": [
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-date",
+      "url": "http://example.com/fhir/SearchParameter/encounter-date",
+      "version": "1.0.0",
+      "name": "EncounterDateSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+     
+      
+      "description": "Searches for Encounter based on the encounter creation date. Example: `/Encounter?date={date}`",
+      "code": "date",
+      "base": ["Encounter"],
+      "type": "date",
+     
+      "target": ["Encounter"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-location",
+      "url": "http://example.com/fhir/SearchParameter/encounter-location",
+      "version": "1.0.0",
+      "name": "EncounterLocationNameSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+     
+      "description": "Searches for Encounter based on the location reference UUID. Example: `/Encounter?location={uuid}`",
+      "code": "location",
+      "base": ["Encounter"],
+      "type": "reference",
+      "expression": "Encounter.location.location",
+      "target": ["Location"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-address-state",
+      "url": "http://example.com/fhir/SearchParameter/encounter-address-state",
+      "version": "1.0.0",
+      "name": "EncounterStateSearchParameter",
+      "status": "active",
+      
+      "description": "Searches based on the address-state field for the Encounter record. Example: `/Encounter?address-state={state}`",
+      "code": "address-state",
+      "base": ["Encounter"],
+      "type": "string",
+      "expression": "Encounter.location.location.address.state",
+      "target": ["Encounter"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-subject",
+      "url": "http://example.com/fhir/SearchParameter/encounter-subject",
+      "version": "1.0.0",
+      "name": "EncounterSubjectSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+      
+      "description": "Searches for Encounter by a given subject. Example: `/Encounter?subject:Patient={patientUuid}`",
+      "code": "subject",
+      "base": ["Encounter"],
+      "type": "reference",
+      "expression": "Encounter.subject",
+      "target": ["Encounter"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-subject-identifier",
+      "url": "http://example.com/fhir/SearchParameter/encounter-subject-identifier",
+      "version": "1.0.0",
+      "name": "EncounterSubjectIdentifierSearchParameter",
+      "status": "active",
+      
+      "description": "Searches for Encounter by the patient identifier. Example: `/Encounter?subject:Patient.identifier={identifier}`",
+      "code": "subject.identifier",
+      "base": ["Encounter"],
+      "type": "token",
+      "expression": "Encounter.subject.identifier",
+      "target": ["Encounter"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-type",
+      "url": "http://example.com/fhir/SearchParameter/encounter-type",
+      "version": "1.0.0",
+      "name": "EncounterTypeSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+      
+      "description": "Searches for Encounter based on the encounter type field. Example: `/Encounter?type={encounterType}`",
+      "code": "type",
+      "base": ["Encounter"],
+      "type": "token",
+      "expression": "Encounter.type",
+      "target": ["Encounter"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-patient",
+      "url": "http://example.com/fhir/SearchParameter/encounter-patient",
+      "version": "1.0.0",
+      "name": "EncounterPatientSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+      
+      "description": "Searches for Encounters by a given patient. Example: `/Encounter?patient={patientUuid}`",
+      "code": "patient",
+      "base": ["Encounter"],
+      "type": "reference",
+      "expression": "Encounter.subject.where(resolve() is Patient)",
+      "target": ["Patient"]
+    },{
+      "resourceType": "SearchParameter",
+      "id": "encounter-patient-identifier",
+      "url": "http://example.com/fhir/SearchParameter/encounter-patient-identifier",
+      "version": "1.0.0",
+      "name": "EncounterPatientIdentifierSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+      
+      "description": "Searches for Encounters by a given patient identifier. Example: `/Encounter?patient.identifier={identifier}`",
+      "code": "patient.identifier",
+      "base": ["Encounter"],
+      "type": "token",
+      "expression": "Encounter.subject.where(resolve() is Patient).identifier",
+      "target": ["Patient"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-id",
+      "url": "http://example.com/fhir/SearchParameter/encounter-id",
+      "version": "1.0.0",
+      "name": "EncounterIdSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+      
+      "description": "Searches based on the Encounter uuid field for the Encounter record. Example: `/Encounter?_id={uuid}`",
+      "code": "_id",
+      "base": ["Encounter"],
+      "type": "token",
+      "expression": "Encounter._id",
+      "target": ["Encounter"]
+    },
+    {
+      "resourceType": "SearchParameter",
+      "id": "encounter-lastUpdated",
+      "url": "http://example.com/fhir/SearchParameter/encounter-lastUpdated",
+      "version": "1.0.0",
+      "name": "EncounterLastUpdatedSearchParameter",
+      "status": "active",
+      "date": "2024-11-27",
+      "expression": "Encounter._lastUpdated",
+      "description": "Searches based on the Encounter lastUpdated field for the Encounter record. Example: `/Encounter?_lastUpdated={date}`",
+      "code": "_lastUpdated",
+      "base": ["Encounter"],
+      "type": "date",
+      
+      "target": ["Encounter"]
+    }
+    
+    
+    
+  ]
+}

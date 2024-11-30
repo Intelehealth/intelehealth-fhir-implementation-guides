@@ -1,0 +1,324 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "ig",
+  "version": "0.0.1",
+  "url": "https://fhir-ig-demo/ImplementationGuide/ig",
+  "name": "ig",
+  "title": "IH FHIR IG",
+  "packageId": "ig",
+  "status": "draft",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "definition": {
+    "resource": [
+      
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHPatient"
+        },
+        "name": "IHPatient",
+        "description": "The IH Patient profile",        
+        "example": true
+      },
+      {
+        "reference": {
+          "reference": "Patient/IHPatientExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHPatient",
+        "name": "IHPatient Example",
+        "description": "Example IH Patient resource."
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHPerson"
+        },
+        "name": "IH Person",
+        "description": "The IH Person profile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHLocation"
+        },
+        "name": "IH Location",
+        "description": "The IH Location profile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/omrs-patient-mapping"
+        },
+        "name": "IH Patient Mapping",
+        "description": "The IH Location profile"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHDiagnosticReport"
+        },
+        "name": "IH Diagnostic Report",
+        "description": "The IH Diagnostic Report"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHMedication"
+        },
+        "name": "IH Medication",
+        "description": "The IH Medication "
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHMedicationRequest"
+        },
+        "name": "IH Medication Request",
+        "description": "The IH Medication Request"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHServiceRequest"
+        },
+        "name": "IH Service Request",
+        "description": "The IH Service Request"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHTask"
+        },
+        "name": "IH Task",
+        "description": "The IH Task"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHEncounter"
+        },
+        "name": "IHEncounter",
+        "description": "The IHEncounter profile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHPractitioner"
+        },
+        "name": "IH Practitioner",
+        "description": "The IH Practitioner profile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHObservation"
+        },
+        "name": "IH Observation",
+        "description": "The IH Observation profile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Person/IHPersonExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHPersonExample",
+        "name": "IHPerson Example",
+        "description": "Example IH Person resource."
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/IHPractitionerExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHPractitionerExample",
+        "name": "IH Practitioner Example",
+        "description": "Example IH Practitioner resource."
+      },
+      {
+        "reference": {
+          "reference": "Observation/IHObservationExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHObservation",
+        "name": "IH Observation Example",
+        "description": "Example IH Observation resource."
+      },
+      {
+        "reference": {
+          "reference": "Location/IHLocationExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHLocation",
+        "name": "IH Location Example",
+        "description": "Example IH Location resource."
+      }
+      ,
+      {
+        "reference": {
+          "reference": "DiagnosticReport/IHDiagnosticReportExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHDiagnosticReport",
+        "name": "IH DiagnosticReport Example",
+        "description": "Example IH DiagnosticReport resource."
+      },
+      {
+        "reference": {
+          "reference": "Encounter/IHEncounterExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHEncounter",
+        "name": "IH Encounter Example",
+        "description": "Example IH Encounter resource."
+      },
+      {
+        "reference": {
+          "reference": "MedicationRequest/IHMedicationRequestExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHMedicationRequest",
+        "name": "IH MedicationRequest Example",
+        "description": "Example IH MedicationRequest resource."
+      },
+      {
+        "reference": {
+          "reference": "ServiceRequest/IHServiceRequestexample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHServiceRequest",
+        "name": "IH ServiceRequest Example",
+        "description": "Example IH ServiceRequest resource."
+      },
+      {
+        "reference": {
+          "reference": "Task/IHTaskExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHTask",
+        "name": "IH Task Example",
+        "description": "Example IH Task resource."
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHPersonMapping"
+        },
+        "name": "IH Person Mapping",
+        "description": "IH Person Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHServiceRequestMapping"
+        },
+        "name": "IH ServiceRequest Mapping",
+        "description": "IH ServiceRequest Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHPractitionerMapping"
+        },
+        "name": "IH Practitioner Mapping",
+        "description": "IH Practitioner Mapping"
+       
+      }
+      ,
+      {
+        "reference": {
+          "reference": "StructureMap/IHEncounterMapping"
+        },
+        "name": "IH Encounter Mapping",
+        "description": "IH Encounter Mapping"
+       
+      }
+      ,
+      {
+        "reference": {
+          "reference": "StructureMap/IHObservationMapping"
+        },
+        "name": "IH Observation Mapping",
+        "description": "IH Observation Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHDiagnosticReportMapping"
+        },
+        "name": "IH DiagnosticReport Mapping",
+        "description": "IH DiagnosticReport Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHMedicationMapping"
+        },
+        "name": "IH Medication Mapping",
+        "description": "IH Medication Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHMedicationRequestMapping"
+        },
+        "name": "IH MedicationRequest Mapping",
+        "description": "IH MedicationRequest Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHLocationMapping"
+        },
+        "name": "IH Location Mapping",
+        "description": "IH Location Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureMap/IHTaskMapping"
+        },
+        "name": "IH Task Mapping",
+        "description": "IH Task Mapping"
+       
+      },{
+        "reference": {
+          "reference": "StructureMap/IHAppointmentMapping"
+        },
+        "name": "IH Appointment Mapping",
+        "description": "IH Appointment Mapping"
+       
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IHAppointment"
+        },
+        "name": "IH Appointment",
+        "description": "IH Appointment "
+       
+      },
+      {
+        "reference": {
+          "reference": "Appointment/IHAppointmentExample"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/StructureDefinition/IHAppointment",
+        "name": "IH Appointment Example",
+        "description": "Example IH Appointment resource."
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": []
+    },
+    "parameter": [
+      {
+        "code": "releaselabel",
+        "value": "CI Build"
+      },
+      {
+        "code": "copyrightyear",
+        "value": "2020+"
+      },
+      {
+        "code": "logging",
+        "value": "init"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/resources"
+      }
+    ]
+  }
+}

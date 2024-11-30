@@ -1,0 +1,29 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "IHDiagnosticReportExample",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/StructureDefinition/IHDiagnosticReport"]
+  },
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8480-6",
+        "display": "Systolic blood pressure"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example-ih-Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/EncounterExample"
+  },
+  "result": [
+    {
+      "reference": "Observation/example-ih-Observation"
+    }
+  ],
+  "issued": "2011-03-04T11:45:33+11:00"
+}

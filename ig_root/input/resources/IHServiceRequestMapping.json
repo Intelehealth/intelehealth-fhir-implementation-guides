@@ -1,0 +1,144 @@
+{
+  "resourceType": "StructureMap",
+  "id": "IHServiceRequestMapping",
+  "title": "FHIR HL7 vs OMRS FHIR2",
+  "description": "ServiceRequest is used to represent a request for some type of procedure or diagnostic test to be performed. When fulfilled, the results of this request are represented as a DiagnosticReport resource with associated Observation resources.",
+  "url": "http://example.org/fhir/StructureMap/IHServiceRequest",
+  "status": "active",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+      "mode": "target"
+    }
+    
+  ],
+  "group": [
+    {
+      "name": "ServiceRequestMapping",
+      "typeMode": "none",
+      "documentation": "This profile maps to Service Request in OMRS FHIR2 (FHIR Resource- to OPENMRS)",
+      "rule": [
+        {
+          "name": "id",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "id"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "TestOrder.uuid"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "status"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "ServiceRequest.ServiceRequestStatus"
+            }
+          ]
+        },
+        {
+          "name": "code",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "code"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "TestOrder.concept"
+            }
+          ]
+        },
+        {
+          "name": "subject",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "subject"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "TestOrder.patient"
+            }
+          ]
+        },
+        {
+          "name": "requester",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "requester"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "ServiceRequest.requester"
+            }
+          ]
+        },
+        {
+          "name": "performer",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "performer"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "Task.owner"
+            }
+          ]
+        },
+        {
+          "name": "occurrenceStartDate",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "occurrence[x]"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "TestOrder.effectiveStartDate"
+            }
+          ]
+        },
+        {
+          "name": "occurrenceEndDate",
+          "source": [
+            {
+              "context": "ServiceRequest",
+              "element": "occurrence[x]"
+            }
+          ],
+          "target": [
+            {
+              "context": "Openmrs",
+              "element": "TestOrder.effectiveEndDate"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
